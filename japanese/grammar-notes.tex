@@ -3,9 +3,12 @@
 \usepackage[main=spanish,japanese]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{CJKutf8}
+\usepackage{tcolorbox}
+
+\definecolor{celeste}{HTML}{E0F7FA}
 
 \title{Apuntes de gramática}
-\author{<Nombre author>}
+\author{Nombre}
 
 %% ----------------------------------------------
 % Comando para insertar texto en japones en cualquier
@@ -33,43 +36,78 @@
 	\end{CJK}
 }
 
+%% ----------------------------------------------
+% Comando para indicar las formas gramaticales
+% que preceden a cierta forma gramatical
+%
+% Parametros:
+% 	* El primero argumento es las formas gramaticales que preceden
+%		a la forma gramatical tratada.
+% 	* El segundo argumento es la forma gramatical en cuestion.
+%% ----------------------------------------------
 \newcommand{\grpre}[2]{
-	\begin{CJK}{UTF8}{min}
-	\[
-		\left\{
-			\begin{array}{l}
+	\begin{center}
+		\begin{CJK}{UTF8}{min}
+			\begin{tabular}{l}
 				#1
-			\end{array}
-		\right\}
-		+
-		\left\{
-			\begin{array}{l}
+			\end{tabular}
+			$+$
+			\begin{tabular}{l}
 				#2
-			\end{array}
-		\right\}
-	\]
+			\end{tabular}
+		\end{CJK}
+	\end{center}
+}
+
+%% ----------------------------------------------
+% Seccion donde aparece la deficion rapida de una expresion
+% gramatical. 
+%
+% Parametros:
+% 	* Argumento opcional entre [] que servira de titulo de la caja.
+%% ----------------------------------------------
+\newenvironment{defrapida}[1][\unskip]{
+	\noindent
+	\begin{CJK}{UTF8}{min}
+		\begin{tcolorbox}[colback=celeste, title=#1]
+} {
+		\end{tcolorbox}
 	\end{CJK}
 }
 
 \begin{document}
 	\maketitle
-
-	\jpex{
-		私は吉良吉影です。 最近どうですか？生活は最近ちょっと難しい
-	}{
-		Soy Kira yoshikage.
-	}
 	
-	\jpex{
-		私は吉良吉影です。 最近どうですか？生活は最近ちょっと難しい
-	}{
-		Soy Kira yoshikage.
-	}
+	%% Contenido de ejemplo eliminar para el uso.
+	Hola buenos dias!!! \tjp{こんにちは！}
 	
 	\grpre{
-		Sustantivo \\ Verbo informal \\ Adjetivo-な
-	}{
-		のみながら
+		Sustantivo+だ \\ Verbo informal \\ Adjetivo-な
+	} {
+		例えば
 	}
+
+	\begin{defrapida}[Prueba de definicion 例えば]
+		Esto es una prueba 例えば
+	\end{defrapida}
+	
+	\begin{defrapida}
+		Esto es una prueba 例えば
+	\end{defrapida}
+
+	\textbf{EJEMPLOS: }
+
+	\jpex{
+		私は吉良吉影です。
+	}{
+		Soy Kira yoshikage.
+	}
+	
+	\jpex{
+		私は吉良吉影です。
+	}{
+		Soy Kira yoshikage.
+	}
+
 \end{document}
 
