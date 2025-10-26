@@ -5,27 +5,71 @@
 \usepackage{CJKutf8}
 
 \title{Apuntes de gramática}
+\author{<Nombre author>}
 
+%% ----------------------------------------------
+% Comando para insertar texto en japones en cualquier
+% momento que desee el escritor.
+%
+% Parametros:
+% 	* El unico argumento es el texto en japones a mostrar.
+%% ----------------------------------------------
+\newcommand{\tjp}[1]{\begin{CJK}{UTF8}{min}#1\end{CJK}}
 
-\newcommand{\textjp}[1]{\begin{CJK}{UTF8}#1\end{CJK}}
-\newenvironment{jpexample}
-{
-	\begin{CJK}{UTF8}
-	\huge
-	\bfseries
-
+%% ----------------------------------------------
+% Comando para insertar un ejemplo en japones.
+% Se constituye de dos argumentos, la parte en japones
+% y su traducción al español.
+%
+% Parametros:
+% 	* El primero argumento es el texto japones del ejemplo.
+% 	* El segundo argumento es su tradución al español.
+%% ----------------------------------------------
+\newcommand{\jpex}[2] {
+	\vspace{1.0\baselineskip}
+	\begin{CJK}{UTF8}{min}
+		\noindent\textbf{\large{#1}}
+		$\rightarrow$ \emph{#2}
+	\end{CJK}
 }
-{
+
+\newcommand{\grpre}[2]{
+	\begin{CJK}{UTF8}{min}
+	\[
+		\left\{
+			\begin{array}{l}
+				#1
+			\end{array}
+		\right\}
+		+
+		\left\{
+			\begin{array}{l}
+				#2
+			\end{array}
+		\right\}
+	\]
 	\end{CJK}
 }
 
 \begin{document}
 	\maketitle
 
-	\begin{jpexample}
-		ありがとう!
-	\end{jpexample}
-
-	\textjp{わたしは}
+	\jpex{
+		私は吉良吉影です。 最近どうですか？生活は最近ちょっと難しい
+	}{
+		Soy Kira yoshikage.
+	}
+	
+	\jpex{
+		私は吉良吉影です。 最近どうですか？生活は最近ちょっと難しい
+	}{
+		Soy Kira yoshikage.
+	}
+	
+	\grpre{
+		Sustantivo \\ Verbo informal \\ Adjetivo-な
+	}{
+		のみながら
+	}
 \end{document}
 
