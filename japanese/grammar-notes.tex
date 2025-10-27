@@ -22,7 +22,10 @@
 
 \definecolor{celeste}{HTML}{E0F7FA}
 
-\title{Apuntes de gramática}
+\title {
+	Apuntes de gramática \\ 
+	\large \emph {Mi subtitulo} % Si se desea se puede usar el paquete titling en vez de esto.
+}
 \author{Nombre}
 
 %% ----------------------------------------------
@@ -38,10 +41,32 @@
 	\end{CJK}
 }
 
+%% ----------------------------------------------
+% Comando para insertar texto en japones con furigana
+% cuando lo asi lo desee el autor.
+%
+% Parametros:
+% 	* El texto base a escribir sobre el cual se pondrá furigana.
+%   * El furigana a escribir sobre la palabra base.
+%% ----------------------------------------------
 \newcommand{\tjpf}[2]{
 	\begin{CJK}{UTF8}{min}
 		\ruby{#1}{#2}
 	\end{CJK}
+}
+
+%% ----------------------------------------------
+% Igual que el comando anterior sin establecer el CJK
+% esto hace que en entornos donde ya se tiene CJK
+% no se vuelva a definir. Como ejemplos, precedencia,
+% o definiciones rapidas
+%
+% Parametros:
+% 	* El texto base a escribir sobre el cual se pondrá furigana.
+%   * El furigana a escribir sobre la palabra base.
+%% ----------------------------------------------
+\newcommand{\tjpfn}[2]{
+	\ruby{#1}{#2}
 }
 
 %% ----------------------------------------------
@@ -163,7 +188,7 @@
 	\textbf{EJEMPLOS: }
 
 	\jpex{
-		私は吉良吉影です。
+		私は\tjpfn{吉良吉影}{きらよしかげ}です。
 	}{
 		Soy Kira yoshikage.
 	}
