@@ -9,6 +9,15 @@
 \usepackage{tabularx} % Para poder tener saltos de lineas automaticos en las tablar
                                           % En caso de desearlo dar medidas especificas a cada tabla.
 
+\usepackage[overlap, CJK]{ruby} % Paquete necesario para poder añadir furigana
+
+% Si se desea cambiar la distancia entre el furigana y la palabra ajustar aqui.
+\renewcommand{\rubysep}{0ex}
+
+% Ajustar el tamaño del texto en furigana. La dimension basicamente es el tamaño base
+% por el escalado a aplicar. Si se pone a 1 el tamaño del furigana sera el mismo que el del
+% texto del cuerpo.
+\renewcommand{\rubysize}{0.6}
 \setcounter{tocdepth}{4}
 
 \definecolor{celeste}{HTML}{E0F7FA}
@@ -23,7 +32,17 @@
 % Parametros:
 % 	* El unico argumento es el texto en japones a mostrar.
 %% ----------------------------------------------
-\newcommand{\tjp}[1]{\begin{CJK}{UTF8}{min}#1\end{CJK}}
+\newcommand{\tjp}[1]{
+	\begin{CJK}{UTF8}{min}
+		#1
+	\end{CJK}
+}
+
+\newcommand{\tjpf}[2]{
+	\begin{CJK}{UTF8}{min}
+		\ruby{#1}{#2}
+	\end{CJK}
+}
 
 %% ----------------------------------------------
 % Comando para insertar un ejemplo en japones.
@@ -99,7 +118,7 @@
 	\section{Ejemplo sección}
 	\subsection{Ejemplo subsección}
 	
-	Hola buenos dias!!! \tjp{こんにちは！}
+	Hola buenos dias!!! \tjp{こんにちは！} Este texto es de prueba para ver como se ve con salto de linea \tjpf{助詞}{じょし} incluso con furigana. \tjpf{自動販売機}{じどうはんばいき}
 	
 	% hbt! por si se quiere que aparezca en linea con el texto
 	\begin{figure}[hbt!]
