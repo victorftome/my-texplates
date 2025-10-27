@@ -6,6 +6,8 @@
 \usepackage{tcolorbox} % Para la caja de explicacion rapida
 \usepackage{graphicx} % Para imagenes
 \usepackage{hyperref} % Para permitir que el indice sea clicable.
+\usepackage{tabularx} % Para poder tener saltos de lineas automaticos en las tablar
+                                          % En caso de desearlo dar medidas especificas a cada tabla.
 
 \setcounter{tocdepth}{4}
 
@@ -108,7 +110,7 @@
 	
 	\begin{table}[hbt!]
 		\centering
-		\begin{tabular}{| l | c | l |}
+		\begin{tabularx}{\textwidth}{| l | c | X |}
 			\hline
 			\textbf{\tjp{助詞}} & \textbf{Lectura} & \textbf{Uso principal} \\
 			\hline
@@ -117,7 +119,7 @@
 			\tjp{を} & O & Indica el objeto directo de la acción (quien la recibe) \\
 			\tjp{に} & Wa & Indica direccion, tiempo, lugar. (muchas veces le sujeto indirecto) \\
 			\hline
-		\end{tabular}
+		\end{tabularx}
 		\caption{Varias particulas (\tjp{助詞})}
 	\end{table}
 	
@@ -155,7 +157,7 @@
 	
 	\begin{table}
 		\centering
-		\begin{tabular}{| l | c | l |}
+		\begin{tabularx}{\textwidth}{| l | c | X |}
 			\hline
 			\textbf{\tjp{助詞}} & \textbf{Lectura} & \textbf{Uso principal} \\
 			\hline
@@ -164,7 +166,7 @@
 			\tjp{を} & O & Indica el objeto directo de la acción (quien la recibe) \\
 			\tjp{に} & Wa & Indica direccion, tiempo, lugar. (muchas veces le sujeto indirecto) \\
 			\hline
-		\end{tabular}
+		\end{tabularx}
 		\caption{Varias particulas segundo ejemplo (\tjp{助詞})}
 	\end{table}
 	
@@ -173,6 +175,22 @@
 		\includegraphics[width=0.5\textwidth]{ExampleFigures/ejemplo-diferencia-grafica-ni-kara-made-he.png}
 		\caption{Diferencias entre \tjp{から・まで、に　y へ} segunda imagen.}
 	\end{figure}
+
+	% Actualizar el numero de bibliografias a las deseadas
+	\begin{thebibliography}{7}
+		\bibitem{lamport94}
+		Leslie Lamport,
+		\textit{\LaTeX: a document preparation system},
+		Addison Wesley, Massachusetts,
+		2nd edition,
+		1994.
+		
+		\bibitem{taekim14}
+		Tae Kim,
+		\textit{A Guide to Japanese Grammar. A Japanese approach to learning Japanese grammar},
+		CreateSpace Independent Publishing Platform,
+		2014.
+	\end{thebibliography}
 
 \end{document}
 
