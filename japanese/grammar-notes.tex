@@ -2,8 +2,12 @@
 
 \usepackage[main=spanish,japanese]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{CJKutf8}
-\usepackage{tcolorbox}
+\usepackage{CJKutf8} % Para poder escribir caracteres CJK
+\usepackage{tcolorbox} % Para la caja de explicacion rapida
+\usepackage{graphicx} % Para imagenes
+\usepackage{hyperref} % Para permitir que el indice sea clicable.
+
+\setcounter{tocdepth}{4}
 
 \definecolor{celeste}{HTML}{E0F7FA}
 
@@ -77,15 +81,55 @@
 
 \begin{document}
 	\maketitle
+	\tableofcontents
+	\listoftables
+	\listoffigures
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% Contenido de ejemplo eliminar para el uso.	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	% Importante usar protect para que se definan correctamente en el .toc
+	% los titulos usando caracteres CJK. Si no se usa protect cuando se usa tjp
+	% en un titulo que aparece en el indice los que vengan a continuacion no
+	% funcionaran.
+	\chapter{\protect\tjp{始めましょう！}}
+	\section{Ejemplo sección}
+	\subsection{Ejemplo subsección}
 	
-	%% Contenido de ejemplo eliminar para el uso.
 	Hola buenos dias!!! \tjp{こんにちは！}
+	
+	% hbt! por si se quiere que aparezca en linea con el texto
+	\begin{figure}[hbt!]
+		\centering
+		\includegraphics[width=0.5\textwidth]{ExampleFigures/ejemplo-diferencia-grafica-ni-kara-made-he.png}
+		\caption{Diferencias entre \tjp{から・まで、に　y へ}}
+	\end{figure}
+	
+	\begin{table}[hbt!]
+		\centering
+		\begin{tabular}{| l | c | l |}
+			\hline
+			\textbf{\tjp{助詞}} & \textbf{Lectura} & \textbf{Uso principal} \\
+			\hline
+			\tjp{は} & Wa & Indica el tema principal de la frase \\
+			\tjp{が} & Wa & Indica el sujeto de la frase \\
+			\tjp{を} & O & Indica el objeto directo de la acción (quien la recibe) \\
+			\tjp{に} & Wa & Indica direccion, tiempo, lugar. (muchas veces le sujeto indirecto) \\
+			\hline
+		\end{tabular}
+		\caption{Varias particulas (\tjp{助詞})}
+	\end{table}
 	
 	\grpre{
 		Sustantivo+だ \\ Verbo informal \\ Adjetivo-な
 	} {
 		例えば
 	}
+
+	\chapter{Ejemplo titulo}
+
+	Esta es una explicacion de ejemplo de algun concepto gramatical del \tjp{日本語}.
 
 	\begin{defrapida}[Prueba de definicion 例えば]
 		Esto es una prueba 例えば
@@ -108,6 +152,27 @@
 	}{
 		Soy Kira yoshikage.
 	}
+	
+	\begin{table}
+		\centering
+		\begin{tabular}{| l | c | l |}
+			\hline
+			\textbf{\tjp{助詞}} & \textbf{Lectura} & \textbf{Uso principal} \\
+			\hline
+			\tjp{は} & Wa & Indica el tema principal de la frase \\
+			\tjp{が} & Wa & Indica el sujeto de la frase \\
+			\tjp{を} & O & Indica el objeto directo de la acción (quien la recibe) \\
+			\tjp{に} & Wa & Indica direccion, tiempo, lugar. (muchas veces le sujeto indirecto) \\
+			\hline
+		\end{tabular}
+		\caption{Varias particulas segundo ejemplo (\tjp{助詞})}
+	\end{table}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\textwidth]{ExampleFigures/ejemplo-diferencia-grafica-ni-kara-made-he.png}
+		\caption{Diferencias entre \tjp{から・まで、に　y へ} segunda imagen.}
+	\end{figure}
 
 \end{document}
 
