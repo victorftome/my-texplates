@@ -54,6 +54,18 @@
 	\end{CJK}
 }
 
+\newcommand{\kanjin}[4]{
+	\begin{center}
+		\begin{tabular}{p{0.1\textwidth} | p{0.9\textwidth}}
+			\multirow{3}*{\Huge\textbf{#1}}
+			& 訓読み: #2 \\
+			& 音読み: #3 \\
+			& 意味: #4 \\
+			\hline
+		\end{tabular}
+	\end{center}
+}
+
 %% ----------------------------------------------
 % Comando para insertar un ejemplo de uso del kanji..
 % Se constituye de dos argumentos, la parte en japones
@@ -69,6 +81,12 @@
 		\noindent\textbf{{#1}}
 		$\rightarrow$ \emph{#2}
 	\end{CJK}
+}
+
+\newcommand{\kjexn}[2] {
+	\vspace{1.0\baselineskip}
+	\noindent\textbf{{#1}}
+	$\rightarrow$ \emph{#2}
 }
 
 %% ----------------------------------------------
@@ -129,6 +147,12 @@
 	\end{CJK}
 }
 
+\newcommand{\jpexn}[2] {
+	\vspace{1.0\baselineskip}
+	\noindent\textbf{\large{#1}}
+	$\rightarrow$ \emph{#2}
+}
+
 %% ----------------------------------------------
 % Seccion donde aparece la deficion rapida de una expresion
 % gramatical. 
@@ -145,11 +169,22 @@
 	\end{CJK}
 }
 
+\newenvironment{defrapidan}[1][\unskip]{
+	\noindent
+	\begin{tcolorbox}[colback=celeste, title=#1]
+	} {
+	\end{tcolorbox}
+}
+
 \begin{document}
 	\maketitle
 	\tableofcontents
 	\listoftables
 	\listoffigures
+	
+	% Para mas comodidad se puede declarar todo el documento como \begin{CJK}{UTF8}{min} \ end{CJK}
+	% En caso de hacer esto usar los entornos y comandos que se llaman igual a los anteriores
+	% pero finalizados en la letra n. Esto indica que nmo se vuelve a declarar el entorno CJK en su interior.
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%% Contenido de ejemplo eliminar para el uso.	%

@@ -86,6 +86,12 @@
 	\end{CJK}
 }
 
+\newcommand{\jpexn}[2] {
+	\vspace{1.0\baselineskip}
+	\noindent\textbf{\large{#1}}
+	$\rightarrow$ \emph{#2}
+}
+
 %% ----------------------------------------------
 % Comando para indicar las formas gramaticales
 % que preceden a cierta forma gramatical
@@ -109,6 +115,18 @@
 	\end{center}
 }
 
+\newcommand{\grpren}[2]{
+	\begin{center}
+		\begin{tabular}{l}
+			#1
+		\end{tabular}
+		$+$
+		\begin{tabular}{l}
+			#2
+		\end{tabular}
+	\end{center}
+}
+
 %% ----------------------------------------------
 % Seccion donde aparece la deficion rapida de una expresion
 % gramatical. 
@@ -125,11 +143,22 @@
 	\end{CJK}
 }
 
+\newenvironment{defrapidan}[1][\unskip]{
+	\noindent
+	\begin{tcolorbox}[colback=celeste, title=#1]
+	} {
+	\end{tcolorbox}
+}
+
 \begin{document}
 	\maketitle
 	\tableofcontents
 	\listoftables
 	\listoffigures
+	
+	% Para mas comodidad se puede declarar todo el documento como \begin{CJK}{UTF8}{min} \ end{CJK}
+	% En caso de hacer esto usar los entornos y comandos que se llaman igual a los anteriores
+	% pero finalizados en la letra n. Esto indica que nmo se vuelve a declarar el entorno CJK en su interior.
 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%% Contenido de ejemplo eliminar para el uso.	%
