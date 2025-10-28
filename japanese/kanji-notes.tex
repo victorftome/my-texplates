@@ -1,0 +1,207 @@
+\documentclass[a4paper, 11pt]{book}
+
+\usepackage[main=spanish,japanese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8} % Para poder escribir caracteres CJK
+\usepackage{tcolorbox} % Para la caja de explicacion rapida
+\usepackage{graphicx} % Para imagenes
+\usepackage{hyperref} % Para permitir que el indice sea clicable.
+\usepackage{multirow} % Para poder tener elementos de varias filas.
+\usepackage{tabularx} % Para poder hacer uso de la variable \textwidth
+
+\usepackage[overlap, CJK]{ruby} % Paquete necesario para poder añadir furigana
+
+% Si se desea cambiar la distancia entre el furigana y la palabra ajustar aqui.
+\renewcommand{\rubysep}{0ex}
+
+% Ajustar el tamaño del texto en furigana. La dimension basicamente es el tamaño base
+% por el escalado a aplicar. Si se pone a 1 el tamaño del furigana sera el mismo que el del
+% texto del cuerpo.
+\renewcommand{\rubysize}{0.6}
+\setcounter{tocdepth}{4}
+
+\definecolor{celeste}{HTML}{E0F7FA}
+
+\title {
+	Apuntes de Kanji \\ 
+	\large \emph {Mi subtitulo} % Si se desea se puede usar el paquete titling en vez de esto.
+}
+\author{Nombre}
+
+%% ----------------------------------------------
+% Comando para insertar un kanji, sus lecturas y su
+% significado.
+%
+% Parametros:
+% 	* El primer argumento es el kanji en cuestion.
+%   * El segundo argumento es su lectura Kunyomi (Se recomienda 
+%      escribir en Hiragana)
+%   * El tercer argumento es su lectura onyomi (Se recomienda 
+%      escribir en Katakana)
+%   * El cuarto parametro son los significados que este tenga.
+%% ----------------------------------------------
+\newcommand{\kanji}[4]{
+	\begin{CJK}{UTF8}{min}
+		\begin{center}
+			\begin{tabular}{p{0.1\textwidth} | p{0.9\textwidth}}
+				\multirow{3}*{\Huge\textbf{#1}}
+				& 訓読み: #2 \\
+				& 音読み: #3 \\
+				& 意味: #4 \\
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{CJK}
+}
+
+%% ----------------------------------------------
+% Comando para insertar un ejemplo de uso del kanji..
+% Se constituye de dos argumentos, la parte en japones
+% y su traducción al español.
+%
+% Parametros:
+% 	* El primero argumento es el texto japones del ejemplo.
+% 	* El segundo argumento es su tradución al español.
+%% ----------------------------------------------
+\newcommand{\kjex}[2] {
+	\vspace{1.0\baselineskip}
+	\begin{CJK}{UTF8}{min}
+		\noindent\textbf{{#1}}
+		$\rightarrow$ \emph{#2}
+	\end{CJK}
+}
+
+%% ----------------------------------------------
+% Comando para insertar texto en japones en cualquier
+% momento que desee el escritor.
+%
+% Parametros:
+% 	* El unico argumento es el texto en japones a mostrar.
+%% ----------------------------------------------
+\newcommand{\tjp}[1]{
+	\begin{CJK}{UTF8}{min}
+		#1
+	\end{CJK}
+}
+
+%% ----------------------------------------------
+% Comando para insertar texto en japones con furigana
+% cuando lo asi lo desee el autor.
+%
+% Parametros:
+% 	* El texto base a escribir sobre el cual se pondrá furigana.
+%   * El furigana a escribir sobre la palabra base.
+%% ----------------------------------------------
+\newcommand{\tjpf}[2]{
+	\begin{CJK}{UTF8}{min}
+		\ruby{#1}{#2}
+	\end{CJK}
+}
+
+%% ----------------------------------------------
+% Igual que el comando anterior sin establecer el CJK
+% esto hace que en entornos donde ya se tiene CJK
+% no se vuelva a definir. Como ejemplos, precedencia,
+% o definiciones rapidas
+%
+% Parametros:
+% 	* El texto base a escribir sobre el cual se pondrá furigana.
+%   * El furigana a escribir sobre la palabra base.
+%% ----------------------------------------------
+\newcommand{\tjpfn}[2]{
+	\ruby{#1}{#2}
+}
+
+%% ----------------------------------------------
+% Comando para insertar un ejemplo en japones.
+% Se constituye de dos argumentos, la parte en japones
+% y su traducción al español.
+%
+% Parametros:
+% 	* El primero argumento es el texto japones del ejemplo.
+% 	* El segundo argumento es su tradución al español.
+%% ----------------------------------------------
+\newcommand{\jpex}[2] {
+	\vspace{1.0\baselineskip}
+	\begin{CJK}{UTF8}{min}
+		\noindent\textbf{\large{#1}}
+		$\rightarrow$ \emph{#2}
+	\end{CJK}
+}
+
+%% ----------------------------------------------
+% Seccion donde aparece la deficion rapida de una expresion
+% gramatical. 
+%
+% Parametros:
+% 	* Argumento opcional entre [] que servira de titulo de la caja.
+%% ----------------------------------------------
+\newenvironment{defrapida}[1][\unskip]{
+	\noindent
+	\begin{CJK}{UTF8}{min}
+		\begin{tcolorbox}[colback=celeste, title=#1]
+} {
+		\end{tcolorbox}
+	\end{CJK}
+}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\listoftables
+	\listoffigures
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%% Contenido de ejemplo eliminar para el uso.	%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	% Importante usar protect para que se definan correctamente en el .toc
+	% los titulos usando caracteres CJK. Si no se usa protect cuando se usa tjp
+	% en un titulo que aparece en el indice los que vengan a continuacion no
+	% funcionaran.
+	\chapter{\protect\tjp{漢字を勉強しましょう！}}
+
+	\kanji{食}{く, た, は}{ショク, ジキ}{Comer, comida}
+	Posible explicación mas detallada del kanji en cuestión en caso de ser necesario.
+
+	Ejemplos de uso:
+	
+	\begin{tabular}{| m{0.45\textwidth} | m{0.45\textwidth} |}
+		\hline
+		\kjex{食べる }{Comer} & \kjex{食事}{Comida, cena, comer (+する)} \\
+		\hline
+		\kjex{夕食}{Cena} & \kjex{\tjpfn{昼食}{ちゅうしょく}}{Desayuno} \\
+		\hline
+	\end{tabular}
+	
+	\kanji{詞}{ことば}{シ}{Palabras, poesia, parte de un discurso}
+	Posible explicación mas detallada del kanji en cuestión en caso de ser necesario.
+
+	Ejemplos de uso:
+	
+	\begin{tabular}{| m{0.45\textwidth} | m{0.45\textwidth} |}
+		\hline
+		\kjex{動詞 }{Verbo} & \kjex{作詞}{Letra de una canción} \\
+		\hline
+		\kjex{代名詞}{Pronombre, sinónimo} & \kjex{名詞}{Sustantivo} \\
+		\hline
+	\end{tabular}
+
+	% Actualizar el numero de bibliografias a las deseadas
+	\begin{thebibliography}{7}
+		\bibitem{lamport94}
+		Leslie Lamport,
+		\textit{\LaTeX: a document preparation system},
+		Addison Wesley, Massachusetts,
+		2nd edition,
+		1994.
+		
+		\bibitem{taekim14}
+		Tae Kim,
+		\textit{A Guide to Japanese Grammar. A Japanese approach to learning Japanese grammar},
+		CreateSpace Independent Publishing Platform,
+		2014.
+	\end{thebibliography}
+
+\end{document}
+
